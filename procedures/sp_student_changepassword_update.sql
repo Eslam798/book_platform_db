@@ -1,6 +1,5 @@
 /* =====================================================================
    Procedure: dbo.sp_student_change_password
-   Database: STD_Normalized
    Kind: UPDATE
    Purpose: Update student password
    Ticket: student-st1
