@@ -5,7 +5,7 @@
    Ticket: student-st1
    Author: Abdelrahman Mamdouh
    Version: 1.0.0
-   CreatedOn: 2025-12-18
+   CreatedOn: 2025-12-19
    ===================================================================== */
 
 IF OBJECT_ID('dbo.sp_student_change_password', 'P') IS NOT NULL
