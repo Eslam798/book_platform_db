@@ -3,7 +3,15 @@ name: Layout Check
 on:
   pull_request:
     paths:
-      - 'procedures/**'
+      - 'procedures/books/**'
+      - 'procedures/exams/**'
+      - 'procedures/logs/**'
+      - 'procedures/materials/**'
+      - 'procedures/mis/**'
+      - 'procedures/reports/**'
+      - 'procedures/staff/**'
+      - 'procedures/students/**'
+      - 'procedures/students_affairs/**'
       - 'tools/check_layout.py'
 
 jobs:
