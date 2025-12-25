@@ -2,7 +2,7 @@
    Procedure: dbo.SP_GetSectionCatById
    Kind: RETRIEVE
    Purpose: Retrieve Faculty information by SectionId (faculty code)
-   PageName: Page Schedule Student
+   PageName: Page Schedule Student and Site1.Master
    Ticket: EBOOK-003
    Author: Osama Mahmoud
    Version: 1.0.0

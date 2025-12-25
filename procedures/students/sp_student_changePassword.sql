@@ -1,18 +1,19 @@
 /* =====================================================================
-   Procedure: dbo.sp_student_change_password
+   Procedure: dbo.sp_changeStudentPassword
    Kind: UPDATE
    Purpose: Update student password
+   PageName: Page Site1.Master
    Ticket: student-st1
    Author: Abdelrahman Mamdouh
    Version: 1.0.0
    CreatedOn: 2025-12-19
    ===================================================================== */
 
-IF OBJECT_ID('dbo.sp_student_change_password', 'P') IS NOT NULL
-    DROP PROCEDURE dbo.sp_student_change_password;
+IF OBJECT_ID('dbo.sp_ChangeStudentPassword', 'P') IS NOT NULL
+    DROP PROCEDURE dbo.sp_ChangeStudentPassword;
 GO
 
-CREATE PROCEDURE dbo.sp_student_change_password
+CREATE PROCEDURE dbo.sp_ChangeStudentPassword
     -- [Input Parameters]
     @p_ed_stud_id VARCHAR(100),
     @p_new_password       NVARCHAR(255),

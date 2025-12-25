@@ -1,21 +1,22 @@
    /* =====================================================================
-   Procedure: dbo.SP_GetEBookStudByFacultyAndStudent
+   Procedure: dbo.SP_GetEBookStudByFacultyAndStudentAndPassword
    Kind: RETRIEVE
-   Purpose: Retrieve electronic books for a specific student in a specific faculty
-   PageName: Page Schedule Student
+   Purpose: Retrieve electronic books for a specific student in a specific faculty and password
+   PageName: Page Site1.Master
    Ticket: EBOOK-001
-   Author: Osama Mahmoud
+   Author: Abdelrahman Mamdouh
    Version: 1.0.0
    CreatedOn: 2025-12-23
    ===================================================================== */
-IF OBJECT_ID('dbo.SP_GetEBookStudByFacultyAndStudent', 'P') IS NOT NULL
-    DROP PROCEDURE dbo.SP_GetEBookStudByFacultyAndStudent;
+IF OBJECT_ID('dbo.SP_GetEBookStudByFacultyAndStudentAndPassword', 'P') IS NOT NULL
+    DROP PROCEDURE dbo.SP_GetEBookStudByFacultyAndStudentAndPassword;
 GO
 
-CREATE PROCEDURE dbo.SP_GetEBookStudByFacultyAndStudent
+CREATE PROCEDURE dbo.SP_GetEBookStudByFacultyAndStudentAndPassword
     -- [Input Parameters]
     @p_faculty_code BIGINT,
     @p_student_id   BIGINT,
+    @p_stud_password NVARCHAR(255),
     @p_lang         NVARCHAR(10) = 'ar',  -- 'ar' or 'en'
     -- [Output Parameters]
     @o_success_code INT OUTPUT,
@@ -32,8 +33,8 @@ BEGIN
         BEGIN
             SET @o_success_code = 4001;
             SET @o_message = CASE WHEN LEFT(@p_lang,2)='ar' 
-                                  THEN N'معرف الكلية أو الطالب مطلوب' 
-                                  ELSE N'Faculty code or Student ID is required' END;
+                                  THEN N'من فضلك ادخل الرقم القومى وكود الكليه' 
+                                  ELSE N'Please enter the national number and faculty code' END;
             RETURN;
         END
 
@@ -41,14 +42,15 @@ BEGIN
         SELECT *
         FROM dbo.E_BOOK_STUD
         WHERE ( STUD_NATIONAL_NUMBER = @p_student_id or ED_STUD_ID = @p_student_id)
-          AND  FACULTY_CODE = @p_faculty_code;
+            AND FACULTY_CODE = @p_faculty_code
+            AND PASS = @p_stud_password;
 
         IF @@ROWCOUNT = 0
         BEGIN
             SET @o_success_code = 4404;
             SET @o_message = CASE WHEN LEFT(@p_lang,2)='ar' 
-                                  THEN N'لا توجد كتب إلكترونية لهذا الطالب في هذه الكلية' 
-                                  ELSE N'No e-books found for this student in this faculty' END;
+                                  THEN N'الطالب غير مسجل او كلمة المرور غير صحيحه' 
+                                  ELSE N'Error in National number or password' END;
             RETURN;
         END
 
