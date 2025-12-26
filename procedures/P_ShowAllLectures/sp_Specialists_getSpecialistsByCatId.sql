@@ -1,5 +1,5 @@
 /* =====================================================================
-   Procedure: dbo.GetSpecialistsByCatId
+   Procedure: dbo.SP_GetSpecialistsByCatId
    Kind: RETRIEVE
    Purpose: Retrieve active specialists by category (Page ShowAllLectures - Dropdown population)
    Ticket: LEC-004
@@ -7,11 +7,11 @@
    Version: 1.0.0
    CreatedOn: 2025-12-24
    ===================================================================== */
-IF OBJECT_ID('dbo.GetSpecialistsByCatId', 'P') IS NOT NULL
-    DROP PROCEDURE dbo.GetSpecialistsByCatId;
+IF OBJECT_ID('dbo.SP_GetSpecialistsByCatId', 'P') IS NOT NULL
+    DROP PROCEDURE dbo.SP_GetSpecialistsByCatId;
 GO
 
-CREATE PROCEDURE dbo.GetSpecialistsByCatId
+CREATE PROCEDURE dbo.SP_GetSpecialistsByCatId
     @p_cat_id       INT,
     @p_lang         NVARCHAR(10) = 'ar',
     @o_success_code INT OUTPUT,
@@ -61,7 +61,7 @@ GO
 --ex:
 DECLARE @code INT, @msg NVARCHAR(4000);
 
-EXEC dbo.GetSpecialistsByCatId
+EXEC dbo.SP_GetSpecialistsByCatId
     @p_cat_id = 10,
     @p_lang = 'ar',
     @o_success_code = @code OUTPUT,

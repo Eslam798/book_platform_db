@@ -1,5 +1,5 @@
 /* =====================================================================
-   Procedure: dbo.GetAllActiveStudentClasses
+   Procedure: dbo.SP_GetAllActiveStudentClasses
    Kind: RETRIEVE
    Purpose: Retrieve all active student classes (no filters) - Used in Page ShowLecture
    Ticket: LEC-002
@@ -7,11 +7,11 @@
    Version: 1.0.1  
    CreatedOn: 2025-12-24
    ===================================================================== */
-IF OBJECT_ID('dbo.GetAllActiveStudentClasses', 'P') IS NOT NULL
-    DROP PROCEDURE dbo.GetAllActiveStudentClasses;
+IF OBJECT_ID('dbo.SP_GetAllActiveStudentClasses', 'P') IS NOT NULL
+    DROP PROCEDURE dbo.SP_GetAllActiveStudentClasses;
 GO
 
-CREATE PROCEDURE dbo.GetAllActiveStudentClasses
+CREATE PROCEDURE dbo.SP_GetAllActiveStudentClasses
     @p_lang         NVARCHAR(10) = 'en',
     @o_success_code INT OUTPUT,
     @o_message      NVARCHAR(4000) OUTPUT
@@ -51,7 +51,7 @@ GO
 
 DECLARE @code INT, @msg NVARCHAR(4000);
 
-EXEC dbo.GetAllActiveStudentClasses
+EXEC dbo.SP_GetAllActiveStudentClasses
    -- @p_lang = 'ar',
     @o_success_code = @code OUTPUT,
     @o_message = @msg OUTPUT;

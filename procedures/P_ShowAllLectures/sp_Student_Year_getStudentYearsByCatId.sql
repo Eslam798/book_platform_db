@@ -1,5 +1,5 @@
 /* =====================================================================
-   Procedure: dbo.GetStudentYearsByCatId
+   Procedure: dbo.SP_GetStudentYearsByCatId
    Kind: RETRIEVE
    Purpose: Retrieve active student years by category (Page ShowAllLectures)
    Ticket: LEC-005
@@ -7,11 +7,11 @@
    Version: 1.0.0
    CreatedOn: 2025-12-24
    ===================================================================== */
-IF OBJECT_ID('dbo.GetStudentYearsByCatId', 'P') IS NOT NULL
-    DROP PROCEDURE dbo.GetStudentYearsByCatId;
+IF OBJECT_ID('dbo.SP_GetStudentYearsByCatId', 'P') IS NOT NULL
+    DROP PROCEDURE dbo.SP_GetStudentYearsByCatId;
 GO
 
-CREATE PROCEDURE dbo.GetStudentYearsByCatId
+CREATE PROCEDURE dbo.SP_GetStudentYearsByCatId
     @p_cat_id       INT,
     @p_lang         NVARCHAR(10) = 'ar',
     @o_success_code INT OUTPUT,
@@ -61,7 +61,7 @@ GO
 --ex:
 DECLARE @code INT, @msg NVARCHAR(4000);
 
-EXEC dbo.GetStudentYearsByCatId
+EXEC dbo.SP_GetStudentYearsByCatId
     @p_cat_id = 10,
     @p_lang = 'ar',
     @o_success_code = @code OUTPUT,

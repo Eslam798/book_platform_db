@@ -1,5 +1,5 @@
 /* =====================================================================
-   Procedure: dbo.GetAllLecturesByFilters
+   Procedure: dbo.SP_GetAllLecturesByFilters
    Kind: RETRIEVE
    Purpose: Retrieve all lectures with full filters (Page ShowAllLectures - Main grid)
    Ticket: LEC-009
@@ -7,11 +7,11 @@
    Version: 1.0.0
    CreatedOn: 2025-12-24
    ===================================================================== */
-IF OBJECT_ID('dbo.GetAllLecturesByFilters', 'P') IS NOT NULL
-    DROP PROCEDURE dbo.GetAllLecturesByFilters;
+IF OBJECT_ID('dbo.SP_GetAllLecturesByFilters', 'P') IS NOT NULL
+    DROP PROCEDURE dbo.SP_GetAllLecturesByFilters;
 GO
 
-CREATE PROCEDURE dbo.GetAllLecturesByFilters
+CREATE PROCEDURE dbo.SP_GetAllLecturesByFilters
     @p_academic_id  INT,   
     @p_year_id      INT,   
     @p_specialid    INT,   
@@ -70,7 +70,7 @@ GO
 --ex:
 DECLARE @code INT, @msg NVARCHAR(4000);
 
-EXEC dbo.GetAllLecturesByFilters
+EXEC dbo.SP_GetAllLecturesByFilters
     @p_academic_id = 53,
     @p_year_id     = 1,
     @p_specialid   = 8,

@@ -1,5 +1,5 @@
 /* =====================================================================
-   Procedure: dbo.GetAnnouncementById
+   Procedure: dbo.SP_GetAnnouncementById
    Kind: RETRIEVE
    Purpose: Retrieve a specific announcement by its ID (Page ShowAnnouncements)
    Ticket: ANN-001
@@ -7,11 +7,11 @@
    Version: 1.0.1
    CreatedOn: 2025-12-24
    ===================================================================== */
-IF OBJECT_ID('dbo.GetAnnouncementById', 'P') IS NOT NULL
-    DROP PROCEDURE dbo.GetAnnouncementById;
+IF OBJECT_ID('dbo.SP_GetAnnouncementById', 'P') IS NOT NULL
+    DROP PROCEDURE dbo.SP_GetAnnouncementById;
 GO
 
-CREATE PROCEDURE dbo.GetAnnouncementById
+CREATE PROCEDURE dbo.SP_GetAnnouncementById
     -- [Input Parameters]
     @p_an_id        INT,                  
     @p_lang         NVARCHAR(10) = 'en',  -- 'ar' or 'en'
@@ -67,7 +67,7 @@ GO
 
 DECLARE @code INT, @msg NVARCHAR(4000);
 
-EXEC dbo.GetAnnouncementById
+EXEC dbo.SP_GetAnnouncementById
     @p_an_id = 10,     
     @p_lang = 'ar',
     @o_success_code = @code OUTPUT,

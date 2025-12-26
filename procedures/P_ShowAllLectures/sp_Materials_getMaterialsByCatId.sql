@@ -1,5 +1,5 @@
 /* =====================================================================
-   Procedure: dbo.GetMaterialsByCatId
+   Procedure: dbo.SP_GetMaterialsByCatId
    Kind: RETRIEVE
    Purpose: Retrieve active materials by category (Page ShowAllLectures)
    Ticket: LEC-008
@@ -7,11 +7,11 @@
    Version: 1.0.0
    CreatedOn: 2025-12-24
    ===================================================================== */
-IF OBJECT_ID('dbo.GetMaterialsByCatId', 'P') IS NOT NULL
-    DROP PROCEDURE dbo.GetMaterialsByCatId;
+IF OBJECT_ID('dbo.SP_GetMaterialsByCatId', 'P') IS NOT NULL
+    DROP PROCEDURE dbo.SP_GetMaterialsByCatId;
 GO
 
-CREATE PROCEDURE dbo.GetMaterialsByCatId
+CREATE PROCEDURE dbo.SP_GetMaterialsByCatId
     @p_cat_id       INT,
     @p_lang         NVARCHAR(10) = 'ar',
     @o_success_code INT OUTPUT,
@@ -61,7 +61,7 @@ GO
 --ex:
 DECLARE @code INT, @msg NVARCHAR(4000);
 
-EXEC dbo.GetMaterialsByCatId
+EXEC dbo.SP_GetMaterialsByCatId
     @p_cat_id = 10,
     @p_lang = 'ar',
     @o_success_code = @code OUTPUT,

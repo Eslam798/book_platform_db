@@ -1,5 +1,5 @@
 /* =====================================================================
-   Procedure: dbo.GetExamScheduleByFilters
+   Procedure: dbo.SP_GetExamScheduleByFilters
    Kind: RETRIEVE
    Purpose: Retrieve exam schedule for a student based on academic year, phase, department, and faculty (Page ShowExamSchedule)
    Ticket: EXAM-003
@@ -7,11 +7,11 @@
    Version: 1.0.0
    CreatedOn: 2025-12-24
    ===================================================================== */
-IF OBJECT_ID('dbo.GetExamScheduleByFilters', 'P') IS NOT NULL
-    DROP PROCEDURE dbo.GetExamScheduleByFilters;
+IF OBJECT_ID('dbo.SP_GetExamScheduleByFilters', 'P') IS NOT NULL
+    DROP PROCEDURE dbo.SP_GetExamScheduleByFilters;
 GO
 
-CREATE PROCEDURE dbo.GetExamScheduleByFilters
+CREATE PROCEDURE dbo.SP_GetExamScheduleByFilters
     -- [Input Parameters]
     @p_academic_id   INT,   
     @p_year_id       INT,   
@@ -75,7 +75,7 @@ GO
 
 DECLARE @code INT, @msg NVARCHAR(4000);
 
-EXEC dbo.GetExamScheduleByFilters
+EXEC dbo.SP_GetExamScheduleByFilters
     @p_academic_id = 6,      
     @p_year_id     = 4,      
     @p_specialid   = 4,      

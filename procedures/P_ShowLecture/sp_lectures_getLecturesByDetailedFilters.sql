@@ -1,5 +1,5 @@
 /* =====================================================================
-   Procedure: dbo.GetLecturesByDetailedFilters
+   Procedure: dbo.SP_GetLecturesByDetailedFilters
    Kind: RETRIEVE
    Purpose: Retrieve lectures with full filters (faculty, material, group, class, academic year) - Page ShowLecture
    Ticket: LEC-003
@@ -7,11 +7,11 @@
    Version: 1.0.0
    CreatedOn: 2025-12-24
    ===================================================================== */
-IF OBJECT_ID('dbo.GetLecturesByDetailedFilters', 'P') IS NOT NULL
-    DROP PROCEDURE dbo.GetLecturesByDetailedFilters;
+IF OBJECT_ID('dbo.SP_GetLecturesByDetailedFilters', 'P') IS NOT NULL
+    DROP PROCEDURE dbo.SP_GetLecturesByDetailedFilters;
 GO
 
-CREATE PROCEDURE dbo.GetLecturesByDetailedFilters
+CREATE PROCEDURE dbo.SP_GetLecturesByDetailedFilters
     -- [Input Parameters]
     @p_cat_id       INT,   
     @p_material_id  INT,   
@@ -76,7 +76,7 @@ GO
 --ex
 DECLARE @code INT, @msg NVARCHAR(4000);
 
-EXEC dbo.GetLecturesByDetailedFilters
+EXEC dbo.SP_GetLecturesByDetailedFilters
     @p_cat_id      = 358,    
     @p_material_id = 8611, 
     @p_group_id    = 0,     
